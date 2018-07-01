@@ -1,0 +1,24 @@
+<h1>Let's add some records man</h1>
+
+
+<%= form_for @article do |f| %> 
+   <p>
+      <%= f.label :artist %><br/>
+      <%= f.text_field :artist %>
+      </p>
+      
+         <p>
+      <%= f.label :album %><br/>
+      <%= f.text_field :album %>
+      </p>
+      
+         <p>
+      <%= f.label :description %><br/>
+      <%= f.text_area :description %>
+      </p>
+      
+         <p>
+      <%= f.submit %>
+      </p>
+
+<% end %>  
