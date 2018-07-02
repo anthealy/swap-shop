@@ -1,5 +1,14 @@
 <h1>Let's add some records man</h1>
 
+<% if @article.errors.any? %>
+ <h2>Oh Oh, looks like you did something wrong! Please try again.</h2>
+ <ul>
+  <% @article.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+ </ul>
+<% end %>
+
 
 <%= form_for @article do |f| %> 
    <p>
