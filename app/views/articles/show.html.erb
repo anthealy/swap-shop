@@ -1,13 +1,16 @@
 <h1> Got it.</h1>
 
   <p>
-  Artist: <%= @article.artist %>
+      Artist: <%= @article.artist %>
   </p>
   
    <p>
-  Album: <%= @article.album %>
+      Album: <%= @article.album %>
   </p>
   
    <p>
-  Description: <%= @article.description %>
+      Description: <%= @article.description %>
   </p>
+  
+  <%= link_to "Edit record listings", edit_article_path(@article) %> |
+  <%= link_to "Back to record listings", articles_path %>
