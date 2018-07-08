@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   
   resources :articles  #paths to articles
   
+  get 'signup', to: 'users#new' #send new users to signup page
+  #post 'users', to: 'users#create'
+  resources :users, except:[:new]
 end
