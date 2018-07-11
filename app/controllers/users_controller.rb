@@ -13,6 +13,21 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id]) #find user
+    if @user.update(user_params) #allows edit
+      flash[:success] = "Your profile was updated successfully" #confirms update of profile
+      redirect_to articles_path #return to vinyl listing
+    else  #if edit does not work
+      render 'edit' #return toedit page
+    end
+    
+  end
+  
   private 
   def user_params
     params.require(:user).permit(:username, :email, :location, :password) #allows entry to database
