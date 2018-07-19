@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   
   
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 5) #will load 5 items to page
   end
   
   def new

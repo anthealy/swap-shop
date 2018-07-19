@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5 ) #will load 5 items per page
   end
   
   def new
@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id]) #find user based on is that's presented
+    @user = User.find(params[:id]) #find user 
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 2) #will load 5 items to user profile page
     
   end
   
