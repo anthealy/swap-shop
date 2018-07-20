@@ -18,8 +18,7 @@ class ArticlesController < ApplicationController
   def create
 
     @article = Article.new(article_params)
-    #temp, will be changed to point at logged in user later
-    @article.user = User.first 
+    @article.user = current_user 
     if @article.save
      flash[:success] = "Article was successfully created"   
      redirect_to article_path(@article)
@@ -59,7 +58,7 @@ class ArticlesController < ApplicationController
   
   def require_same_user
     if current_user != @article.user  #if the item does not belong to logged in user
-      flash[:danger] = "Opps, that not your record" #show message
+      flash[:danger] = "Opps, that not your LP record" #show message
       redirect_to root_path  #return to root
     end
   end 
