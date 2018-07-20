@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :user #receives one to many association with user
   #enforces an artist entry into Article database
-  validates :artist, presence: true, length: { minimum: 3, maximum: 50 }
+  validates :artist, presence: true, length: { minimum: 1, maximum: 50 }
   #enforces an album entry into Article database
   validates :album, presence: true
   #enforces an description entry into Article database, with minimum 20, max 300 charater entry 

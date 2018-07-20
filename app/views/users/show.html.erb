@@ -13,7 +13,6 @@
 <!--renders partial 'views/articles/_article.html.erb-->
 <!--lists articles associted with user-->
 <%= render 'articles/article', obj: @user_articles %> 
-
 <div class="center">
   <%= will_paginate @user_articles %>
 </div>

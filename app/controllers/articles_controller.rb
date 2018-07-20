@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
-  
+  before_action :require_user, except: [:index, :show] 
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
     @articles = Article.paginate(page: params[:page], per_page: 5) #will load 5 items to page
@@ -17,7 +18,8 @@ class ArticlesController < ApplicationController
   def create
 
     @article = Article.new(article_params)
-    @article.user = User.first
+    #temp, will be changed to point at logged in user later
+    @article.user = User.first 
     if @article.save
      flash[:success] = "Article was successfully created"   
      redirect_to article_path(@article)
@@ -37,9 +39,6 @@ class ArticlesController < ApplicationController
   end
   
   def show
-
-  
-
   end
   
   def destroy
@@ -58,4 +57,10 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:artist, :album, :description)
   end
   
+  def require_same_user
+    if current_user != @article.user  #if the item does not belong to logged in user
+      flash[:danger] = "Opps, that not your record" #show message
+      redirect_to root_path  #return to root
+    end
+  end 
 end
