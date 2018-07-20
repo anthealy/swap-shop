@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   end
   
   def require_same_user
-    if current_user != @article.user  #if the item does not belong to logged in user
+    if current_user != @article.user  and !current_user.admin? #if the item does not belong to logged in user, and the user is not an admin. 
       flash[:danger] = "Opps, that not your LP record" #show message
       redirect_to root_path  #return to root
     end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :articles #sets up one to many association with articles
+  has_many :articles, dependent: :destroy #sets up one to many association with articles
    #ensures a username is present, is unique, case sensitive and 
    before_save { self.email = email.downcase } #converts email to downcase before it saves in database
   validates :username, presence: true, uniqueness: {case_sensitive: false},
