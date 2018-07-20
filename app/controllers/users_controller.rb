@@ -13,8 +13,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params) #whitelists
     if @user.save
+      session[:user_id] = @user.id #auto logs in new user
       flash[:success] = "Welcome to the Vinyl Swap Shop #{@user.username}" #confirms to user account creation
-      redirect_to articles_path #redirects to articles listing
+      redirect_to user_path (@user) #redirects to user's profile.
     else
       render 'new' #return to form if something wrong
     end
