@@ -19,8 +19,8 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should get show" do 
-     session sign_in_as(@user, "password")
-     get type_path(@type)
+    sign_in_as(@user, "password")
+    get type_path(@type)
     assert_response :success
   end
   

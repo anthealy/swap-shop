@@ -2,7 +2,13 @@ require 'test_helper'
 
 class CreateTypeTest < ActionDispatch::IntegrationTest
   
+  def setup
+   @user = User.create(username: "admin2", email: "admin2@admin.com", password: "password", admin: true)
+  end 
+  
+  
   test "get new type form and create type" do
+    sign_in_as(@user, "password") 
     get new_type_path
     assert_template 'types/new'
     assert_difference 'Type.count', 1 do
@@ -14,6 +20,7 @@ class CreateTypeTest < ActionDispatch::IntegrationTest
   end
   
    test "invalid type submission results in failure" do
+     sign_in_as(@user, "password")
      get new_type_path
      assert_template 'types/new'
      assert_no_difference 'Type.count' do
