@@ -4,6 +4,7 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
   
   def setup
     @type = Type.create(name: "LP")
+    @user = User.create(username: "admin2", email: "admin2@admin.com", password: "password", admin: true)
     
   end
   
@@ -18,8 +19,17 @@ class TypesControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should get show" do 
+     session sign_in_as(@user, "password")
      get type_path(@type)
     assert_response :success
-    
   end
+  
+  test "should redirect create when admin not logged in" do
+    assert_no_difference 'Type.count' do
+      post types_path, params: {type: {name: "LP"}}
+    end
+    assert_redirected_to types_path
+  end
+  
+  
 end
