@@ -1,5 +1,10 @@
 <h1 align="center"><%= "Type: " + @type.name %></h1>
 <div align="center">
+  <% if logged_in? and current_user.admin? %>
+      <div class="row">
+        <span class="badge"><%= link_to "Edit Type Name", edit_type_path(@type) %></span>
+      </div>
+  <% end %>
   <%= will_paginate @type_articles %>
 </div>
 <%= render 'articles/article', obj: @type_articles %>
