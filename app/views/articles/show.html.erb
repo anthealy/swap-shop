@@ -20,6 +20,9 @@
        <h4 class="center description"><strong>Description:</strong></h4>
        <hr>
        <%= simple_format(@article.description) %>
+       <% if @article.types.any? %>
+         <p>Types: <%= render @article.types %></p>
+       <% end %>
        <div class="article-actions">
          <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
           <%= link_to "Edit record listing", edit_article_path(@article), class: "btn btn-xs btn-primary" %>

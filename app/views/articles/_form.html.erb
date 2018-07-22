@@ -27,11 +27,21 @@
               <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Record description" %>
             </div>
           </div>
-             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-               <%= f.submit "Add record", class: 'btn btn-primary btn-lg' %>
-             </div>
-          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-offset-2 col-sm-08">
+                <%= f.collection_check_boxes :type_ids, Type.all, :id, :name do |cb| %>
+                  <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+                <%end%>
+              </div>
+            </div>
+           </div>
+           
+           <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+             <%= f.submit "Add record", class: 'btn btn-primary btn-lg' %>
+            </div>
+           </div>
 <% end %>
               <div class="col-xs-4 col-xs-offset-4">
                  [ <%= link_to "Cancel request and return to vinyl listing", articles_path %> ]

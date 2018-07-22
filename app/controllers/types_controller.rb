@@ -22,7 +22,8 @@ class TypesController < ApplicationController
 
   
   def show
-    
+    @type = Type.find(params[:id])
+    @type_articles = @type.articles.paginate(page: params[:page], per_page: 5)
   end
   
   private
