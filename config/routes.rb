@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   
   resources :types, except: [:destroy]
   
+  resources :conversations do
+    resources :messages
+  end
+  
 end

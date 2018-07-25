@@ -3,9 +3,19 @@
   <div class="col-md-4 col-md-offset-4 center">
      <%= gravatar_for @user %> <!--defines method-->
   </div>
-  
+  <div>
+    
+    </div>
 </div>
 <h4 align="center"><%= @user.username %>'s records available for swap</h4> 
+  
+  
+  <div class="center">
+    <%= link_to "Mailbox", conversations_path, class: "item" %>
+  </div>
+  
+  
+  
 <div class="center">
   <%= will_paginate @user_articles %>
 </div>
@@ -15,6 +25,7 @@
 <%= render 'articles/article', obj: @user_articles %> 
 <div class="center">
   <%= will_paginate @user_articles %>
+
 </div>
 
   
