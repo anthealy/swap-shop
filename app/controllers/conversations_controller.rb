@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
-   before_action :authenticate_user!
- # before_action :require_user
- # before_action :current_user
+  # before_action :authenticate_user!
+    before_action :require_user
+    before_action :current_user
  
   def index
     @users = User.all
