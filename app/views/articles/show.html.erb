@@ -10,6 +10,13 @@
                 <li class="article-artist">
                   <%= link_to @article.user.username, user_path(@article.user) %> <!--show users profile -->
                 </li>
+                
+                
+                <li class="article-artist">
+                  <h4 align="center">Email <%= link_to @article.user.email %> to arrange swap</h4> 
+                </li>
+              
+                
                 <li><small><%= pluralize(@article.user.articles.count, "record") if @article.user.articles %>
                 </small></li> <!--show total number of items a users has posted-->
                    
