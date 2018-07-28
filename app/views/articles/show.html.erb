@@ -11,7 +11,9 @@
                   <%= link_to @article.user.username, user_path(@article.user) %> <!--show users profile -->
                 </li>
                 <li class="article-artist">
+                  <% if logged_in? %>
                   <h4 align="center">Email <%= link_to @article.user.email, "mailto:#{@article.user.email}" %> to arrange swap</h4> 
+                  <% end %>
                 </li>
                 <li><small><%= pluralize(@article.user.articles.count, "record") if @article.user.articles %>
                 </small></li> <!--show total number of items a users has posted-->

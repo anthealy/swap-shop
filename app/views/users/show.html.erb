@@ -6,7 +6,9 @@
   
 </div>
 <h4 align="center"><%= @user.username %>'s records available for swap</h4> 
-<h4 align="center">Email <%= link_to @user.email, "mailto:#{@user.email}" %> to arrange swap</h4> 
+<% if logged_in? && (current_user == @user.username || current_user.admin?) %>
+<h4 align="center">Email <%= link_to @user.email, "mailto:#{@user.email}" %> </h4> 
+<% end %>
 <div class="center">
   <%= will_paginate @user_articles %>
 </div>
