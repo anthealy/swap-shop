@@ -5,7 +5,9 @@
   </div>
   
 </div>
-<h4 align="center"><%= @user.username %>'s records available for swap</h4> 
+<h4 align="center">Location: <%= @user.location %> </h4> 
+<h4 align="center"><%= @user.username %>'s records available for swap</h4>
+
 <% if logged_in? && (current_user == @user.username || current_user.admin?) %>
 <h4 align="center">Email <%= link_to @user.email, "mailto:#{@user.email}" %> </h4> 
 <% end %>

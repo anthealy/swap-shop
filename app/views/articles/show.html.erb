@@ -9,6 +9,7 @@
                 <li><%= link_to gravatar_for(@article.user), user_path(@article.user) %></li>  <!--show user image -->
                 <li class="article-artist">
                   <%= link_to @article.user.username, user_path(@article.user) %> <!--show users profile -->
+                  <h4 align="center">Location: <%= @article.user.location %> </h4> 
                 </li>
                 <li class="article-artist">
                   <% if logged_in? %>
@@ -38,6 +39,7 @@
             <!--https://stackoverflow.com/questions/14584218/how-to-add-facebook-comments-to-a-rails-application-->
             <%= link_to "Back to record listings", articles_path, class: "btn btn-xs btn-success"%>
                  </div>
+              
                  <%= social_share_button_tag(@article.artist) %>
                  <div id="fb-root"></div>
                     <script>(function(d, s, id) {
@@ -49,5 +51,6 @@
                     }(document, 'script', 'facebook-jssdk'));</script>
                     
                  <div class="fb-comments" data-href="http://example.com" data-width="470" data-num-posts="2"></div>
+            
    </div>
   
