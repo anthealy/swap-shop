@@ -13,8 +13,9 @@
                 </li>
                 <li class="article-artist">
                   <% if logged_in? %>
-                  <!--<h4 align="center">Email <%= link_to @article.user.email, "mailto:#{@article.user.email}", class: "btn btn-xs btn-primary"%> to arrange swap</h4> -->
-                  <h4 align="center"><%= link_to "Click to arrange swap", "mailto:#{@article.user.email}", class: "btn btn-xs btn-primary"%></h4>
+                  
+                  <%= mail_to @article.user.email, "Click to arrange swap", subject: @article.artist, body: "Your content #{request.original_url}", class: "btn btn-xs btn-primary" %>
+                  
                   <% end %>
                 </li>
                 <li><small><%= pluralize(@article.user.articles.count, "record") if @article.user.articles %>
