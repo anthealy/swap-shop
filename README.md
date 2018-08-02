@@ -16,3 +16,5 @@ To Run on Cloud9
 Bundle Install
 
 Rails DB:Migrate
+
+rails s -b $IP -p $PORT
