@@ -7,14 +7,14 @@ class TypesController < ApplicationController
   end
   
   def new
-    @type = Type.new
+    @type = Type.new #creates a new form
   end
   
   def create
-    @type = Type.new(type_params)
-    if @type.save
-      flash[:success] = "Description tag was created successfully"
-      redirect_to types_path
+    @type = Type.new(type_params) #whitelists name
+    if @type.save    #saves 
+      flash[:success] = "Description tag was created successfully" #flash this message is saves successfully
+      redirect_to types_path  #then redirect to types path
     else
       render 'new'
     end
@@ -40,7 +40,7 @@ class TypesController < ApplicationController
     @type_articles = @type.articles.paginate(page: params[:page], per_page: 5)
   end
   
-  private
+  private  #anything below private is only avaiable to that conroller
     def type_params
     params.require(:type).permit(:name)
     end
